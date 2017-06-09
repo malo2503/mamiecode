@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./style.css">
+      </head>
+  <body>
+     
+      <h1 class="grandTitre">VOTRE LISTE DE CLIENTS</h1>
+<%
+for (var i=0; i< ClientList.length; i++) {
+%>
+<ul>
+    <li>
+    <%= ClientList[i].firstName%>
+    <%=ClientList[i].lastName%>
+    <%= ClientList[i].email%>
+    <%=ClientList[i].phone%>
+ </li>      
+</ul>
+   
+
+<%
+}
+%>
+      <p>
+      
+      </p>
+        <form action="./add">
+      Prenom:
+      <input type="text" name="firstName" value="">
+      Nom:
+      <input type="text" name="lastName" value="">
+          Email:
+    <input type="text" name="email" value="">
+          Téléphone:
+          <input type="text" name="phone" value="">
+            <br>
+       <input type="submit" value="valider">
+    </form>
+     <p>
+      
+      </p>      
+<%
+  for (var i=0; i< ClientList.length; i++) {
+ %>
+ 
+          <form action="/update">
+              Prénom
+          <input type="text" name="firstName" value="<%=ClientList[i].firstName%>">
+              Nom:
+          <input type="text" name="lastName" value="<%=ClientList[i].lastName%>">
+              Email:
+          <input type="text" name="email" value="<%=ClientList[i].email%>">
+              Téléphone:
+         <input type="text" name="phone" value="<%=ClientList[i].phone%>">
+         <input type="hidden" name="i" value="<%=i%>">
+              <a href="/delete?position=<%=i%>"> <span class="glyphicon glyphicon-trash"></span></a>
+            <input type="submit" value="modifier">
+        </form>
+     <%
+    }
+     %>
+        
+      
+               
+  </body>
+</html>
